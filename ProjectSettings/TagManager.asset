@@ -6,6 +6,8 @@ TagManager:
   tags:
   - lethal
   - finish
+  - enemy
+  - coin
   layers:
   - Default
   - TransparentFX

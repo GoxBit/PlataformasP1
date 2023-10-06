@@ -5,7 +5,11 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     public bool canMove;
-    public float speed;
+
+    //public float speed;
+
+    [SerializeField] float speed;
+
     [SerializeField] int startPoint;
     [SerializeField] Transform[] points;
 

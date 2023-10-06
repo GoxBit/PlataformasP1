@@ -127,4 +127,12 @@ public class PlayerMove : MonoBehaviour
     {
         readyToJump = true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "coin")
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }

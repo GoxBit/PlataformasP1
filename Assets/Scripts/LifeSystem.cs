@@ -7,7 +7,7 @@ public class LifeSystem : MonoBehaviour
     private int lives;
 
     [SerializeField] private Transform start;
-    [SerializeField] private Transform finish;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class LifeSystem : MonoBehaviour
 
         if(collision.gameObject.tag == "finish")
         {
+            Time.timeScale = 0;
             //UI DE GANASTE
         }
     }
