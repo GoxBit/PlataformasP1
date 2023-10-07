@@ -130,9 +130,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "coin")
+        if (other.tag == "coin")
         {
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
         }
     }
 }
