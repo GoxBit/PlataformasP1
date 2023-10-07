@@ -77,7 +77,7 @@ public class LifeSystem : MonoBehaviour
 
     private void AnimateHeart(GameObject heart)
     {
-        if (!gameObject) { return; }
+        if (gameObject == null) { return; }
 
         var sequence = LeanTween.sequence();
         sequence.append(LeanTween.scale(heart, Vector3.one * 2.0f, 0.5f).setEasePunch());
