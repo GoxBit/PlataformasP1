@@ -24,7 +24,7 @@ public class LifeSystem : MonoBehaviour
         if(collision.gameObject.tag == "enemy")
         {
             lifes -= 1;
-            hearts[lifes].SetActive(false);
+            AnimateHeart(hearts[lifes]);
             if (lifes <= 0) {  
                 gameObject.SetActive(false);
                 Time.timeScale = 0;
@@ -53,7 +53,7 @@ public class LifeSystem : MonoBehaviour
             if (lifes == 1)
             {
                 lifes -= 1;
-                hearts[lifes].SetActive(false);
+                AnimateHeart(hearts[lifes]);
                 transform.position = start.position;
                 Time.timeScale = 0;
                 //UI DE PERDISTE
@@ -64,7 +64,7 @@ public class LifeSystem : MonoBehaviour
             else if (lifes >= 2)
             {
                 lifes -= 1;
-                hearts[lifes].SetActive(false);
+                AnimateHeart(hearts[lifes]);
                 transform.position = start.position;
                 gameObject.SetActive(true);
             }
@@ -73,5 +73,15 @@ public class LifeSystem : MonoBehaviour
 
     private void LoadScene(int index) { 
         SceneManager.LoadScene(index);
+    }
+
+    private void AnimateHeart(GameObject heart)
+    {
+        if (!gameObject) { return; }
+
+        var sequence = LeanTween.sequence();
+        sequence.append(LeanTween.scale(heart, Vector3.one * 2.0f, 0.5f).setEasePunch());
+        sequence.append(LeanTween.color(heart, Color.white, 0.5f).setEaseLinear());
+        LeanTween.delayedCall(1.0f, () => heart.SetActive(false));
     }
 }

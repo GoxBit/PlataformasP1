@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 100
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1067,7 +1067,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 92.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 100
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1969,6 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _click: {fileID: 8300000, guid: 125704f749f2f7742812b7e99228ca32, type: 3}
   _hover: {fileID: 8300000, guid: a117e26565af45f44b19214c9e16093b, type: 3}
+  tweenTime: 2.5
 --- !u!82 &1409758949
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2319,6 +2320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _click: {fileID: 8300000, guid: 125704f749f2f7742812b7e99228ca32, type: 3}
   _hover: {fileID: 8300000, guid: a117e26565af45f44b19214c9e16093b, type: 3}
+  tweenTime: 2.5
 --- !u!82 &1459898056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2459,6 +2461,7 @@ GameObject:
   - component: {fileID: 1495197996}
   - component: {fileID: 1495197998}
   - component: {fileID: 1495197997}
+  - component: {fileID: 1495197999}
   m_Layer: 5
   m_Name: btnPlay
   m_TagString: Untagged
@@ -2732,6 +2735,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _click: {fileID: 8300000, guid: 125704f749f2f7742812b7e99228ca32, type: 3}
   _hover: {fileID: 8300000, guid: a117e26565af45f44b19214c9e16093b, type: 3}
+  tweenTime: 2.5
+--- !u!114 &1495197999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495197991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2f4b27196f84954b44753aaac214bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610421900
 GameObject:
   m_ObjectHideFlags: 0
