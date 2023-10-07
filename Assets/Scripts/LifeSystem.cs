@@ -1,40 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeSystem : MonoBehaviour
 {
-    private int lives;
+    private int lifes;
 
-    [SerializeField] private Transform start;
+    [SerializeField] private Transform start = null;
+    [SerializeField] List<GameObject> hearts = new List<GameObject>();
 
-    // Start is called before the first frame update
-    void Start()
+
+    private const int GAME_OVER_SCENE_INDEX = 2;
+    private const int WIN_SCENE_INDEX = 3;
+
+    private void Awake()
     {
-        lives = 3;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        lifes = 3;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "enemy")
         {
-            switch (lives)
-            {
-                case 1: lives -= 1;
-                    gameObject.SetActive(false);
-                    Time.timeScale = 0;
-                    //UI DE PERDISTE
-                    break;
-                case 2: lives -= 1;
-                    break;
-                case 3: lives -= 1;
-                    break;
+            lifes -= 1;
+            hearts[lifes].SetActive(false);
+            if (lifes <= 0) {  
+                gameObject.SetActive(false);
+                Time.timeScale = 0;
+                //UI DE PERDISTE
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                LoadScene(GAME_OVER_SCENE_INDEX);
             }
         }
 
@@ -42,6 +39,9 @@ public class LifeSystem : MonoBehaviour
         {
             Time.timeScale = 0;
             //UI DE GANASTE
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            LoadScene(WIN_SCENE_INDEX);
         }
     }
 
@@ -50,19 +50,28 @@ public class LifeSystem : MonoBehaviour
         if(other.gameObject.tag == "lethal")
         {
             gameObject.SetActive(false);
-            if (lives == 1)
+            if (lifes == 1)
             {
-                lives -= 1;
+                lifes -= 1;
+                hearts[lifes].SetActive(false);
                 transform.position = start.position;
                 Time.timeScale = 0;
                 //UI DE PERDISTE
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                LoadScene(GAME_OVER_SCENE_INDEX);
             }
-            else if (lives >= 2)
+            else if (lifes >= 2)
             {
-                lives -= 1;
+                lifes -= 1;
+                hearts[lifes].SetActive(false);
                 transform.position = start.position;
                 gameObject.SetActive(true);
             }
         }
+    }
+
+    private void LoadScene(int index) { 
+        SceneManager.LoadScene(index);
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -25,16 +24,22 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private Transform orientation;
 
-    float hInput;
-    float vInput;
-    Vector3 moveDirection;
-    Rigidbody rb;
+    //UI
+    [SerializeField] private TextMeshProUGUI coinsText = null;
+
+    private float hInput;
+    private float vInput;
+    private Vector3 moveDirection;
+    private Rigidbody rb;
+    private int coins = 0;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
         doubleJump = false;
+        UpdateCoins();
     }
 
     // Update is called once per frame
@@ -132,7 +137,14 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.tag == "coin")
         {
+            //Add Points
+            coins++;
+            UpdateCoins();
             Destroy(other.gameObject);
         }
+    }
+
+    private void UpdateCoins() { 
+        coinsText.SetText(string.Format(coins.ToString(), "00"));
     }
 }
